@@ -1,0 +1,11 @@
+{-# LANGUAGE OverloadedStrings #-}
+
+module Main (main)
+    where
+
+import qualified Data.Text as T
+
+
+main :: IO ()
+main = putStrLn . T.unpack . solve . T.pack =<< getLine
+    where solve = T.unwords . filter (not . T.null) . T.splitOn "WUB"

@@ -1,0 +1,15 @@
+module Main (main)
+    where
+
+import Control.Monad (replicateM)
+import qualified Data.Map.Strict as M
+
+
+readInts :: String -> (Int,Int)
+readInts = (\[a,b] -> (a,b)) . take 2 . map read . words
+
+main :: IO ()
+main = print . solve . map readInts =<< flip replicateM getLine =<< readLn
+    where solve xs = sum $ combine (map fst xs) (map snd xs)
+          accum = foldr (\a -> M.insertWith (+) a 1) M.empty
+          combine a b = M.intersectionWith (*) (accum a) (accum b)

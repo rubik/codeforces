@@ -1,6 +1,11 @@
 *
 !*.*
 !Makefile
+!A/
+!B/
+!C/
+!D/
+!E/
 *.sw[opa]
 *.o
 *.hi
